@@ -15,17 +15,17 @@ void Ouput(int a[] , int n){
 	for(int i = 0 ; i < n ; ++i)
 	  cout<<a[i]<<" ";
 }
- bool CheckScp(int n){
+bool CheckScp(int n){
  	int m = abs(sqrt(n));
  	if(m*m == n) return true;
  	return false;
  }
- int CheckSnt(int n){
+int CheckSnt(int n){
  	for(int i = 2 ; i*i<=n; ++i)
  	   if(n % i == 0) return -1;
  	return n>1;   
  }
- bool CheckShh(int n){
+bool CheckShh(int n){
  	int sum=0;
  	for(int i = 1; i <= n/2 ; i++){
  		if(n % i == 0) sum+=i;
@@ -46,6 +46,8 @@ void Ouput(int a[] , int n){
 	 }
 	 n--;
  }
+ 
+//add number 
  void AllXSatisfy(int a[] , int &n , int &x){
  	   cin>>x;
 	 int i  = 0 , mark = 1;
@@ -64,17 +66,21 @@ void Ouput(int a[] , int n){
 	          maxPrime = a[j]; 	   	  
 			}
 		 }
-//		 cout<<maxPrime<<endl;
-	if(cnt > 0){
-		for(i = 0 ; i < n ; i++){
-		   if(a[i] == maxPrime){
-		   		AddNumber(a , n , i+1, x);
-		   		   i++;
-		     }
-	    }
-	}else{
-		AddNumber(a , n , n , x);	
-	}	 
+//	if(cnt > 0){
+//		for(i = 0 ; i < n ; i++){
+//		   if(a[i] == maxPrime){
+//		   		AddNumber(a , n , i+1, x);
+//		   		   i++;
+//		     }
+//	    }
+//	}else{
+//		AddNumber(a , n , n , x);	
+//	}
+      int i = 0;	 
+      while(a[i] != maxPrime && i < n - 1)
+        i++;
+      AddNumber(a , n , i+1 , x);	
+      
   }
     cout<<endl;
   	Ouput(a , n);
@@ -107,8 +113,8 @@ void BeautifulyArray(int a[] , int &n){
 	int i = 0;
      for( ; i < n-1 ; ++i){
      	if((a[i] % 2== 0 && a[i+1] % 2 == 0)
-		 ||(a[i] % 2==1 && a[i+1] % 2 == 1)){
-     		DeleteNumber(a , n , i); 
+		 ||(a[i] % 2== 1 && a[i+1] % 2 == 1)){
+     		DeleteNumber(a , n , i+1); 
 			i--;
 		 }
 	 }
